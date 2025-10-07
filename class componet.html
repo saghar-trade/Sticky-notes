@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functional Component</title>
+    <style>
+      body {
+        background: dodgerblue;
+        font-family: Arial, sans-serif;
+        color: white;
+        padding: 20px;
+      }
+      .form-element {
+        margin-bottom: 12px;
+      }
+      label {
+        margin-right: 8px;
+      }
+      input {
+        padding: 6px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        background: green;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- فرم ساده -->
+    <form>
+      <div class="form-element">
+        <label for="username">Username</label>
+        <input type="text" id="username" />
+      </div>
+      <div class="form-element">
+        <label for="password">Password</label>
+        <input type="password" id="password" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- جایی که React رندر میشه -->
+    <div id="root"></div>
+
+    <!-- React و ReactDOM -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <!-- Babel برای JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      // یک functional component ساده
+      class UserName extends React.Component {
+        render() {
+          return (
+            <div className="form-element">
+              <label htmlFor="username">Username</label>
+              <input type="text" id="username" />
+            </div>
+          );
+        }
+      }
+      class Password extends React.Component {
+        render() {
+          return (
+            <div className="form-element">
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password" />
+            </div>
+          );
+        }
+      }
+      function Submit() {
+        return <button type="submit">Submit</button>;
+      }
+
+      class SignInForm extends React.Component {
+        render() {
+          return (
+            <form>
+              <UserName />
+              <Password />
+              <Submit />
+            </form>
+          );
+        }
+      }
+
+      // رندر کامپوننت داخل div#root
+      ReactDOM.render(<SignInForm />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

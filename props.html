@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functional Component</title>
+  </head>
+  <body>
+    <!-- جایی که React رندر میشه -->
+    <div id="root"></div>
+
+    <!-- React و ReactDOM -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <!-- Babel برای JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function Hello(user) {
+        return "hello  " + user.name + " " + user.lastName;
+      }
+      console.log(Hello({ name: "saghar", lastName: "soleymani " }));
+
+      function Helloo(props) {
+        return (
+          <div>
+            hello {props.name} {props.lastName}
+          </div>
+        );
+      }
+
+      // رندر کامپوننت داخل div#rootnp
+      ReactDOM.render(
+        <Helloo name="saghi" lastName="joon" />,
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>
